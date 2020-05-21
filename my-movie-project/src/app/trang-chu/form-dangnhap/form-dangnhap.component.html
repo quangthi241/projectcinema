@@ -1,0 +1,51 @@
+<div class="container" id='formdn'>
+  <div class="row">
+    <div class="col-5 mx-auto">
+      <h2>Đăng Nhập</h2>
+      <form [formGroup]='formDangNhap' (ngSubmit)='DangNhap()'>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Tên Đăng nhập</label>
+          <input type="text" class="form-control"  placeholder="Nhập tài khoản" formControlName='taiKhoan'>
+          <div *ngIf="formDangNhap.get('taiKhoan').invalid && formDangNhap.get('taiKhoan').touched">
+            <div *ngIf="formDangNhap.get('taiKhoan').errors['required']" >
+              Không được để trống
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control"  placeholder="Password" formControlName='matKhau'>
+          <div *ngIf="formDangNhap.get('matKhau').invalid && formDangNhap.get('matKhau').touched">
+            <div *ngIf="formDangNhap.get('matKhau').errors['required']">
+              Không được để trống
+            </div>
+          </div>
+        </div>
+          <div *ngIf='show; else disabled'>
+            <button type="submit" class="btn btn-dark" disabled>Đăng Nhập</button>
+          </div>
+          <ng-template #disabled>
+            <button type="submit" class="btn btn-dark" >Đăng Nhập</button>
+          </ng-template>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="my-container">
+  <ng-template #customLoadingTemplate>
+      <div class="custom-class">
+          <h3>
+              Loading...
+          </h3>
+          <button (click)="showAlert()">
+              Click me!
+          </button>
+      </div>
+  </ng-template>
+
+  <ngx-loading [show]="loading" [config]="{ animationType: ngxLoadingAnimationTypes.rectangleBounce,
+    backdropBackgroundColour: 'rgba(255,255,255,0.3)', backdropBorderRadius: '10px',
+    primaryColour: '#ffffff', secondaryColour: '#ffffff', tertiaryColour: '#ffffff' }" [template]="customLoadingTemplate">
+  </ngx-loading>
+</div> -->

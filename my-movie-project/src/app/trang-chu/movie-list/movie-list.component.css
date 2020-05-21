@@ -1,0 +1,174 @@
+.movie_item item{
+  width: 100%;
+  border-radius: 5px;
+}
+
+.movie_item p{
+  font-size: 18px;
+  margin: 15px;
+}
+
+.movie_item button{
+  background-color: rgba(0, 0, 0, 0.568) ;
+  border: none;
+  padding: 10px 10px;
+  color: blanchedalmond;
+  display: block;
+  width: 100%;
+  font-size:20px;
+  border-radius: 5px;
+  margin-top: 10px;
+
+}
+
+.movie_item:hover p{
+  display: none;
+}
+
+
+
+mdb-card:hover mdb-card-body{
+  display: block;
+}
+
+@media (max-width: 1900px){
+  mdb-card-body{
+    position: absolute;
+    width: 330px ;
+    height: 460px ;
+    background-color: #212121ee;
+    display: none ;
+    border-radius: 11px;
+  }
+  mdb-card-title img{
+    width: 200px !important;
+    height: 300px !important;
+    border-radius: 7px;
+    padding-bottom: 10px;
+  }
+}
+
+@media (max-width: 1199px){
+  mdb-card-body{
+    position: absolute;
+    width: 270px ;
+    height: 460px ;
+    background-color: #212121ee;
+    display: none;
+    border-radius: 11px;
+  }
+
+  mdb-card-title img{
+    width: 180px !important;
+    height: 270px !important;
+    border-radius: 7px;
+    padding-bottom: 0px;
+  }
+  mdb-card-title h4{
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1024px){
+  mdb-card{
+    height: 300px !important;
+    width: 190px !important;
+  }
+  mdb-card-img {
+    height: 150px !important;
+    width: 190px !important;
+  }
+
+  mdb-card-body{
+    position: absolute;
+    width: 191px ;
+    height: 460px ;
+    background-color: #212121ee;
+    display: none;
+    border-radius: 11px;
+  }
+  mdb-card-title img{
+    width: 121px !important;
+    height: 160px !important;
+    border-radius: 7px;
+    padding-bottom: 0px;
+  }
+  mdb-card-title h4{
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1000px){
+  mdb-card{
+    height: 300px !important;
+    width: 190px !important;
+  }
+  mdb-card-img {
+    height: 150px !important;
+    width: 190px !important;
+  }
+
+  mdb-card-body{
+    position: absolute;
+    width: 191px ;
+    height: 460px ;
+    background-color: #212121ee;
+    display: none;
+    border-radius: 11px;
+  }
+  mdb-card-title img{
+    width: 121px !important;
+    height: 160px !important;
+    border-radius: 7px;
+    padding-bottom: 0px;
+  }
+  mdb-card-title h4{
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 990px){
+  mdb-card{
+    height: 300px !important;
+    width: 190px !important;
+  }
+  mdb-card-img {
+    height: 150px !important;
+    width: 190px !important;
+  }
+
+  mdb-card-body{
+    position: absolute;
+    width: 191px ;
+    height: 460px ;
+    background-color: #212121ee;
+    display: none;
+    border-radius: 11px;
+  }
+  mdb-card-title img{
+    width: 121px !important;
+    height: 160px !important;
+    border-radius: 7px;
+    padding-bottom: 0px;
+  }
+  mdb-card-title h4{
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 920px){
+  mdb-card-title img{
+    width: 100px !important;
+    height: 150px !important;
+    border-radius: 7px;
+    padding-bottom: 10px;
+  }
+}
+
+h4{
+  color: blanchedalmond !important;
+}
+
+
+
+

@@ -1,0 +1,203 @@
+<Header>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background-color: black; ">
+    <div class="container">
+      <a
+      class="navbar-brand js-scroll-trigger"
+      href="qluser"
+      style="color: darkkhaki; font-family: 'Fredericka the Great', cursive; font-size: 30px;"
+      >
+      CINEMA
+    </a>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto" style="font-size: 20px;">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="qlmovies" style="color: blanchedalmond; font-family: 'Cabin Sketch', cursive ">Quản lý phim</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="qluser" style="color: blanchedalmond; font-family: 'Cabin Sketch', cursive">Quản lý người dùng</a>
+          </li>
+          <li>
+            <a class="nav-link js-scroll-trigger" href="" style="color: blanchedalmond; font-family: 'Cabin Sketch', cursive" (click)='xoaToken()'>Đăng Xuất</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</Header>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 Col-xm-12" id='form'>
+         <form #formAddMovie='ngForm' (ngSubmit)='clickForm(formAddMovie.value)' >
+          <div class="form-group">
+            <label for="exampleInputEmail1">Mã Phim</label>
+            <input #maPhim='ngModel' required minlength='4' maxlength='4' type="text" class="form-control"  placeholder="Mã phim" name="maPhim" ngModel>
+            <div *ngIf='maPhim.errors && (maPhim.touched || maPhim.dirty)'>
+              <div *ngIf='maPhim.errors.required' style="color: red;">
+                Vui lòng nhập mã phim
+              </div>
+              <div *ngIf='maPhim.errors.minlength || maPhim.errors.maxlength' style="color: red;">
+                Nhập 4 ký tự
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Tên Phim</label>
+            <input #tenPhim='ngModel' required  type="tenPhim" class="form-control"  placeholder="Tên phim" name="tenPhim" ngModel>
+            <div *ngIf='tenPhim.errors && (tenPhim.touched || tenPhim.dirty)'>
+              <div *ngIf='tenPhim.errors.required' style="color: red;">
+                Vui lòng nhập tên phim
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Bí Danh</label>
+            <input #biDanh='ngModel'required [pattern]='"^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" +
+            "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" +
+            "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$"' type="text" class="form-control"  placeholder="Nhập bi danh" name="biDanh" ngModel>
+            <div *ngIf='biDanh.errors && (biDanh.touched || biDanh.dirty)'>
+              <div *ngIf='biDanh.errors.required' style="color: red;">
+                Vui lòng nhập bí danh
+              </div>
+              <!-- <div *ngIf='biDanh.errors.pattern' style="color: red;">
+                Vui lòng nhập đúng
+              </div> -->
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Link Trailer</label>
+            <input #trailer='ngModel' required  type="link" class="form-control"  placeholder="Trailer" name="trailer" ngModel>
+            <div *ngIf='trailer.errors && (trailer.touched || trailer.dirty)'>
+              <div *ngIf='trailer.errors.required' style="color: red;">
+                Vui lòng add link
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Hình Ảnh</label>
+            <input #hinhAnh='ngModel' required  type="text" class="form-control"  placeholder="Hình ảnh" name="hinhAnh" ngModel>
+            <div *ngIf='hinhAnh.errors && (hinhAnh.touched || hinhAnh.dirty)'>
+              <div *ngIf='hinhAnh.errors.required' style="color: red;">
+                Vui lòng add hình ảnh
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Mô Tả Phim</label>
+            <input #moTa='ngModel' required  type="text" class="form-control"  placeholder="Mô tả phim" name="moTa" ngModel>
+            <div *ngIf='moTa.errors && (moTa.touched || moTa.dirty)'>
+              <div *ngIf='moTa.errors.required' style="color: red;">
+                Vui lòng thêm mô tả phim
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Ma nhom</label>
+              <select name="maNhom" value="GP03" ngModel >
+              <option value="GP03">GP03</option>
+              <option value="GP04">GP04</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Ngày khởi chiếu</label>
+            <input #ngayKhoiChieu='ngModel' required  type="text" class="form-control"  placeholder="Ngày khởi chiếu" name="ngayKhoiChieu" ngModel>
+            <div *ngIf='ngayKhoiChieu.errors && (ngayKhoiChieu.touched || ngayKhoiChieu.dirty)'>
+              <div *ngIf='ngayKhoiChieu.errors.required' style="color: red;">
+                Vui lòng thêm ngày khởi chiếu
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Điểm đánh giá</label>
+            <input #danhGia='ngModel' required  type="text" class="form-control"  placeholder="Điểm đánh giá" name="danhGia" ngModel>
+            <div *ngIf='danhGia.errors && (danhGia.touched || danhGia.dirty)'>
+              <div *ngIf='danhGia.errors.required' style="color: red;">
+                Vui lòng thêm điểm đánh giá
+              </div>
+            </div>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-dark" >Send</button>
+        </form>
+        <button class="btn btn-dark mt-1" (click)='cancel()'>cancel</button>
+      </div>
+      <div class="col-md-4 Col-xm-8" id="boxright">
+        <h3>Tìm kiếm phim </h3>
+      <input [(ngModel)]="query" id="filter" placeholder='Nhập thông tin cần tìm' class="form-control"> <br>
+      <div class="col-md-6 Col-xm-12">
+        <table  border="1" width= "500px" 	cellspacing="100px">
+          <tr style="border: black 1px;">
+            <!-- <th>STT</th> -->
+            <th>Mã Phim</th>
+            <th>Tên Phim</th>
+            <th>Ngày Khởi Chiếu</th>
+            <!-- <th>Link Trailer</th> -->
+            <th>Ma nhom</th>
+            <th>Cập Nhật</th>
+            <th>Xóa</th>
+
+          </tr>
+        <!-- </div>
+        <div> -->
+          <tr *ngFor='let index of mangPhim | search : "maPhim,tenPhim":query '>
+              <!-- <td>{{index.length}}</td> -->
+              <td>{{index.maPhim}}</td>
+              <td>{{index.tenPhim}}</td>
+              <td>{{index.ngayKhoiChieu | date: 'M/d-h:mm'}}</td>
+              <!-- <td>
+                <a [href]='index.trailer'>{{index.trailer}}</a>
+              </td> -->
+              <!-- <td>{{index.soDt}}</td> -->
+              <td>{{index.maNhom}}</td>
+              <!-- <td style="padding-left: 40px;">{{index.maLoaiNguoiDung}}</td> -->
+               <td > <!-- style="padding-left: 40px;" -->
+                <button class="btn btn-success" #eDit
+                  [attr.data-maPhim]='index.maPhim'
+                  [attr.data-tenPhim]='index.tenPhim'
+                  [attr.data-biDanh]='index.biDanh'
+                  [attr.data-trailer]='index.trailer'
+                  [attr.data-hinhAnh]='index.hinhAnh'
+                  [attr.data-moTa]='index.moTa'
+                  [attr.data-maNhom]='index.maNhom'
+                  [attr.data-ngayKhoiChieu]='index.ngayKhoiChieu'
+                  [attr.data-danhGia]='index.danhGia'
+                  (click)='Edit(eDit)'
+                >Edit</button>
+              </td>
+              <td>
+                <button
+                 (click)="deletePhim(index.maPhim)"
+                 class="btn btn-danger"
+                  >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </div>
+</body>
+
+<footer>
+  <div class="container">
+    <p>&copy; Your Website 2019. All Rights Reserved.</p>
+    <ul class="list-inline">
+      <li class="list-inline-item">
+        <a href="#">Privacy</a>
+      </li>
+      <li class="list-inline-item">
+        <a href="#">Terms</a>
+      </li>
+      <li class="list-inline-item">
+        <a href="#">FAQ</a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+
+

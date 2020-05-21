@@ -1,0 +1,46 @@
+
+<div class='bgfilmstyle' id='moviedetails' >
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <img [src]="ttp.hinhAnh" alt="">
+      </div>
+      <div class="col-9" style="color: blanchedalmond;" id="info">
+        <h1>{{ttp.tenPhim}}</h1>
+        <p> <b>Mô tả:</b> {{ttp.moTa}}</p>
+        <p> <b>Điểm đánh giá:</b> {{ttp.danhGia}}</p>
+        <p> <b>Ngày khỏi chiếu:</b> {{ttp.ngayKhoiChieu |  date: 'dd/MM, hh:mm'}}</p>
+        <p> <b>Click để chọn Suất chiếu:</b> </p>
+        <button class="btn btn-outline-danger m-1" *ngFor='let lichchieu of ttp.lichChieu | slice:10:22' [routerLink]="['/datve',lichchieu.maLichChieu]">
+          {{lichchieu.ngayChieuGioChieu | date: 'dd/MM, hh:mm'}}
+        </button>
+      </div>
+    </div> <br>
+    <div class="row">
+      <div class="col-12">
+        <iframe width="1098px" height="616px"  [src]="trailerctp |safe" frameborder="0" allow="autoplay"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="my-container">
+  <ng-template #customLoadingTemplate>
+      <div class="custom-class">
+          <h3>
+              Loading...
+          </h3>
+          <button (click)="showAlert()">
+              Click me!
+          </button>
+      </div>
+  </ng-template>
+
+  <ngx-loading [show]="loading" [config]="{ animationType: ngxLoadingAnimationTypes.rectangleBounce,
+    backdropBackgroundColour: 'rgba(255,255,255,0.3)', backdropBorderRadius: '10px',
+    primaryColour: '#ffffff', secondaryColour: '#ffffff', tertiaryColour: '#ffffff' }" [template]="customLoadingTemplate">
+  </ngx-loading>
+</div> -->
+
+

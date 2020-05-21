@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4 mx-auto text-center">
+      <input  type="text" class="form-control mb-2" placeholder="Số ghế" #soGhe>
+      <input  type="text" class="form-control mb-2" placeholder="Tên ghế" #tenGhe>
+      <input  type="text" class="form-control mb-2" placeholder="Giá ghế" #giaGhe>
+      <input  type="text" class="form-control mb-2" placeholder="Trạng thái" #trangThai>
+      <button class="btn btn-success" (click)='onAddForChild(soGhe.value, tenGhe.value, giaGhe.value, trangThai.value)'>Thêm ghế ngồi</button>
+    </div>
+  </div>
+</div>
+<app-seat-list></app-seat-list>

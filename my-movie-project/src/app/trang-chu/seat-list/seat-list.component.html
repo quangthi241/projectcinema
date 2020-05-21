@@ -1,0 +1,19 @@
+<div class='bgfilmstyle'>
+  <div class="container" id="seatlist">
+    <div class="row ">
+      <div class="col-8 justify-content-center" >
+        <h1 class="text-center">Màn Hình</h1> <br>
+        <app-seat *ngFor='let seat of seatList'  [item]='seat' (eventClickseat)='changeValue($event, seat)'></app-seat>
+      </div>
+      <div class="col-4">
+        <br><br><br><br><br><br><br><br><br>
+        <div class="text-center" *ngFor='let index of dsgdadat'>
+          <span>Ma so ghe: {{index.maGhe}} </span>
+          <span> gia tien: {{index.giaVe}}</span>
+        </div>
+        <p class="text-center">Số ghế đã đặt: {{soGheDadat}} </p>
+        <p class="text-center">Số ghế còn lại: {{soGheCOnLai}} </p>
+      </div>
+    </div> <hr>
+  </div>
+</div>

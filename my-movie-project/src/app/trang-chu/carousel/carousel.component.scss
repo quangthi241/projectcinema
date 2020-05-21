@@ -1,0 +1,40 @@
+#carouselExampleIndicators{
+  padding-top: 50px;
+}
+
+
+@media (max-width: 1236px){
+  #carouselExampleIndicators{
+    padding-top: 61px;
+  }
+}
+
+@media (max-width: 1228px){
+  #carouselExampleIndicators {
+      padding-top: 61px ;
+    }
+  }
+
+  @media (max-width: 1030px){
+    #carouselExampleIndicators{
+      padding-top: 61px ;
+    }
+  }
+
+  @media (max-width: 1024px){
+    #carouselExampleIndicators{
+      padding-top: 0px ;
+    }
+  }
+
+@media (max-width: 1010px){
+  #carouselExampleIndicators{
+    padding-top: 0px ;
+  }
+}
+
+@media (max-width: 375px){
+  #carouselExampleIndicators{
+    padding-top: 0px;
+  }
+}

@@ -1,0 +1,6 @@
+<ng-container *ngIf="!item.daDat, else gheDaDcChon">
+  <button class="btn btn-info m-1" [ngClass]="{'btn-danger': clickSeat}" (click)='onClick()'>{{item.stt}}</button>
+</ng-container>
+<ng-template #gheDaDcChon>
+  <button class="btn btn-dark m-1" disabled>{{item.stt}}</button>
+</ng-template>

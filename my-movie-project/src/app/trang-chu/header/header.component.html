@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg  fixed-top"  style="background-color: black; ">
+  <div class="container">
+    <a
+    class="navbar-brand "
+    href="#page-top"
+    style="color: darkkhaki; font-family: 'Fredericka the Great', cursive; font-size: 30px;"
+    >
+    CINEMA
+    </a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto" style="font-size: 20px;">
+        <div *ngIf='admin'>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="signin" style="color: blanchedalmond; font-family: 'Cabin Sketch', cursive ">Admin</a>
+          </li>
+        </div>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="dangky" style="color: blanchedalmond; font-family: 'Cabin Sketch', cursive">Đăng Ký</a>
+        </li>
+        <li class="nav-item" *ngIf='account; else dangnhap'>
+          <a class="nav-link js-scroll-trigger" href="" style="color: blanchedalmond; font-family: 'Cabin Sketch', cursive" (click)='xoaToken()'>Đăng Xuất</a>
+        </li>
+        <ng-template #dangnhap>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="dangnhap" style="color: blanchedalmond; font-family: 'Cabin Sketch', cursive">Đăng Nhập</a>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </div>
+</nav>

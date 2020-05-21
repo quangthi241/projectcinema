@@ -1,0 +1,189 @@
+<Header>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background-color: black; ">
+    <div class="container">
+      <a
+      class="navbar-brand js-scroll-trigger"
+      href="qluser"
+      style="color: darkkhaki; font-family: 'Fredericka the Great', cursive; font-size: 30px;"
+      >
+      CINEMA
+    </a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto" style="font-size: 20px;">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="qlmovies" style="color: blanchedalmond; font-family: 'Cabin Sketch', cursive ">Quản lý phim</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="qluser" style="color: blanchedalmond; font-family: 'Cabin Sketch', cursive">Quản lý người dùng</a>
+          </li>
+          <li>
+            <a class="nav-link js-scroll-trigger" href="" style="color: blanchedalmond; font-family: 'Cabin Sketch', cursive" (click)='xoaToken()'>Đăng Xuất</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</Header>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 Col-xm-12 Col-sm-12">
+        <form #formAddUser='ngForm' (ngSubmit)='clickForm(formAddUser.value)' >
+          <div class="form-group">
+            <label for="exampleInputEmail1">Tài Khoản</label>
+            <input #taikhoan='ngModel' required minlength='6' maxlength='20' type="text" class="form-control"  placeholder="Nhập tài khoản" name="taiKhoan" ngModel>
+            <div *ngIf='taikhoan.errors && (taikhoan.touched || taikhoan.dirty)'>
+              <div *ngIf='taikhoan.errors.required' style="color: red;">
+                Vui lòng nhập tài khoản
+              </div>
+              <div *ngIf='taikhoan.errors.minlength || taikhoan.errors.maxlength' style="color: red;">
+                Nhập từ 6 đến 20 ký tự
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input #password='ngModel' required minlength='6' maxlength='20' type="password" class="form-control"  placeholder="Password" name="matKhau" ngModel>
+            <div *ngIf='password.errors && (password.touched || password.dirty)'>
+              <div *ngIf='password.errors.required' style="color: red;">
+                Vui lòng nhập mật khẩu
+              </div>
+              <div *ngIf='password.errors.minlength || password.errors.maxlength' style="color: red;">
+                Mật khẩu phải từ 6 đến 20 ký tự
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Họ Tên</label>
+            <input #hoten='ngModel'required [pattern]='"^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" +
+            "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" +
+            "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$"' type="text" class="form-control"  placeholder="Nhập họ tên" name="hoTen" ngModel>
+            <div *ngIf='hoten.errors && (hoten.touched || hoten.dirty)'>
+              <div *ngIf='hoten.errors.required' style="color: red;">
+                Vui lòng nhập họ tên
+              </div>
+              <div *ngIf='hoten.errors.pattern' style="color: red;">
+                Vui lòng nhập đúng tên
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input #email='ngModel' required [pattern]='"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"' type="email" class="form-control"  placeholder="Enter email" name="email" ngModel>
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <div *ngIf='email.errors && (email.touched || email.dirty)'>
+              <div *ngIf='email.errors.required' style="color: red;">
+                Vui lòng nhập Email
+              </div>
+              <div *ngIf='email.errors.pattern' style="color: red;">
+                Vui lòng nhập đúng Email
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Số điện thoại</label>
+            <input #sdt='ngModel' required minlength='10' maxlength='11'  type="text" class="form-control"  placeholder="Nhập SDT" name="soDt" ngModel>
+            <div *ngIf='sdt.errors && (sdt.touched || sdt.dirty)'>
+              <div *ngIf='sdt.errors.required' style="color: red;">
+                Vui lòng nhập số điện thoại
+              </div>
+              <div *ngIf='sdt.errors.minlength || sdt.errors.maxlength' style="color: red;">
+                Số điện thoại phải từ 10 đến 11 số
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Ma nhom</label>
+              <select name="maNhom" value="GP03" ngModel >
+              <option value="GP03">GP03</option>
+              <option value="GP04">GP04</option>
+            </select>
+          </div>
+          <div class="form-check">
+            <input type="radio"  value='khachHang' name="maLoaiNguoiDung" ngModel>
+            <label class="form-check-label ml-1" for="exampleCheck1">Khách hàng</label>
+            <input type="radio" class="ml-4" value='QuanTri' name="maLoaiNguoiDung" ngModel>
+            <label class="form-check-label ml-1" for="exampleCheck1">Quản trị viên</label>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-dark" >Send</button>
+        </form>
+        <button class="btn btn-dark mt-1" (click)='cancel()'>cancel</button>
+      </div>
+      <div class="col-md-4 Col-xm-8 Col-sm-12">
+        <h3>Tìm kiếm người dùng : </h3>
+      <input [(ngModel)]="query" id="filter" placeholder='Nhập thông tin cần tìm' class="form-control"> <br>
+      <div class="col-md-7 Col-xm-12 Col-sm-12">
+        <table  border="1" width= "500px" 	cellspacing="100px">
+          <tr style="border: black 1px;">
+            <!-- <th>STT</th> -->
+            <th>Tài khoản</th>
+            <th>Password</th>
+            <!-- <th>Họ tên</th> -->
+            <th>Email</th>
+            <!-- <th>Số điện thoại</th> -->
+            <!-- <th>Đối tượng</th> -->
+            <th>Cập nhật</th>
+            <th>Xóa</th>
+          </tr>
+        <!-- </div>
+        <div> -->
+          <tr *ngFor='let index of mangNguoiDungDK | search : "taiKhoan,soDt,hoTen,email":query '>
+              <!-- <td>{{index.length}}</td> -->
+              <td>{{index.taiKhoan}}</td>
+              <td>{{index.matKhau}}</td>
+              <!-- <td>{{index.hoTen}}</td> -->
+              <td>{{index.email}}</td>
+              <!-- <td>{{index.soDt}}</td> -->
+              <!-- <td>{{index.maNhom}}</td> -->
+              <!-- <td style="padding-left: 40px;">{{index.maLoaiNguoiDung}}</td> -->
+              <td style="padding-left: 40px;">
+                <button class="btn btn-dark" #eDit
+                  [attr.data-taikhoan]='index.taiKhoan'
+                  [attr.data-matkhau]='index.matKhau'
+                  [attr.data-hoten]='index.hoTen'
+                  [attr.data-email]='index.email'
+                  [attr.data-sdt]='index.soDt'
+                  [attr.data-manhom]='index.maNhom'
+                  [attr.data-maloainguoidung]='index.maLoaiNguoiDung'
+                  (click)='Edit(eDit)'
+                >Edit</button>
+              </td>
+              <td>
+                <button class="btn btn-outline-dark" #deleteNguoiDung
+                [attr.data-taikhoan]='index.taiKhoan'
+                (click)="deleteTaiKhoan(deleteNguoiDung)">Delete</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </div>
+</body>
+
+<footer>
+  <div class="container">
+    <p>&copy; Your Website 2019. All Rights Reserved.</p>
+    <ul class="list-inline">
+      <li class="list-inline-item">
+        <a href="#">Privacy</a>
+      </li>
+      <li class="list-inline-item">
+        <a href="#">Terms</a>
+      </li>
+      <li class="list-inline-item">
+        <a href="#">FAQ</a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+

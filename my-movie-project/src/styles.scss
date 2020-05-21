@@ -1,0 +1,174 @@
+
+/* You can add global styles to this file, and also import other style files */
+// ----owl-next-prev----
+.owl-next span{
+  font-size: 70px;
+}
+.owl-next{
+  position: absolute;
+  top: 28%;
+  right: -50px;
+}
+.owl-prev span{
+  font-size: 70px;
+}
+.owl-prev{
+  position: absolute;
+  top: 28%;
+  left: -50px;
+}
+
+// ----owl-next-prev----
+
+//movielist
+.item img{
+  width: 350px !important;
+  height: 460px !important;
+  border-radius: 13px !important;
+}
+
+mdb-card{
+  border-radius: 14px !important;
+}
+//movielist
+
+//button left right
+.fa-chevron-right{
+  position: absolute;
+  top: 50%;
+  left: 1090px;
+  font-size: 30px;
+  color: blanchedalmond;
+}
+.fa-chevron-right:hover {
+  font-size: 50px;
+}
+
+@media (max-width: 1063px){
+  .fa-chevron-right{
+    margin-left: -180px !important;
+  }
+}
+
+.fa-chevron-left{
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  font-size: 30px;
+  color: blanchedalmond;
+}
+.fa-chevron-left:hover {
+  font-size: 50px;
+}
+//button left right
+
+
+//tiểu tiết trên trang chủ
+.bgfilmstyle{
+  background-color: black;
+}
+
+.boder{
+  width: 100%;
+  height: 10px;
+  background-color: rgba(0, 0, 0, 0.78);
+}
+//tiểu tiết trên trang chủ
+
+
+@media (max-width: 1199px){
+  .fa-chevron-right{
+    margin-left: -420px !important;
+  }
+}
+
+
+@media (max-width: 1024px){
+  mdb-card-body{
+    position: absolute;
+    width: 270px ;
+    height: 460px ;
+    background-color: #212121ee;
+    display: none ;
+    border-radius: 11px;
+  }
+
+  .item img {
+    height: 300px !important;
+    border-radius: 13px !important;
+  }
+
+}
+
+@media (max-width: 799px){
+  .fa-chevron-right{
+    margin-left: -420px !important;
+  }
+  .fa-chevron-left{
+    margin-left: 2px !important;
+  }
+}
+
+@media (max-width: 375px){
+  .fa-chevron-left{
+    margin-left: -50px !important;
+  }
+  mdb-card{
+    height: 300px !important;
+    width: 130px !important;
+  }
+  mdb-card-img {
+    height: 300px !important;
+    width: 130px !important;
+  }
+  mdb-card-body {
+    position: absolute !important;
+    width: 130px !important;
+    height: 300px !important;
+    background-color: #212121ee !important;
+    display: none ;
+    border-radius: 11px !important;
+  }
+  mdb-card-title img{
+    width: 50px !important;
+    height: 50px !important;
+  }
+}
+
+@media (max-width: 800px){
+  .fa-chevron-left{
+    margin-left: -50px !important;
+  }
+  mdb-card{
+    height: 300px !important;
+    width: 130px !important;
+  }
+  mdb-card-img {
+    height: 300px !important;
+    width: 130px !important;
+  }
+
+  .item img {
+    height: 300px ;
+    border-radius: 13px !important;
+  }
+
+  mdb-card-body {
+    position: absolute !important;
+    width: 190px !important;
+    height: 300px !important;
+    background-color: #212121ee !important;
+    display: none ;
+    border-radius: 11px !important;
+  }
+  mdb-card-title img{
+    height: 300px !important;
+    width: 130px !important;
+    border-radius: 7px;
+    padding-bottom: 10px;
+  }
+  mdb-card-title h4{
+    font-size: 15px;
+  }
+}
+
