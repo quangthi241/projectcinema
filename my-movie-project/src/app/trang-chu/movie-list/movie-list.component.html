@@ -1,10 +1,3 @@
-<!-- <div
-class="movie_item item "
->
-  <img [src]="movieInfo.hinhAnh" alt="">
-  <p>{{movieInfo.tenPhim}}</p>
-  <button [routerLink]="['/chitiet',movieInfo.maPhim]">Xem Chi Tiet</button>
-</div> -->
 
 
       <mdb-card class="my-1 movie_item item">
@@ -14,7 +7,6 @@ class="movie_item item "
             <img [src]="movieInfo.hinhAnh" alt="Card image cap">
             <h4 style="font-family: 'Cabin Sketch', cursive;">{{movieInfo.tenPhim}}</h4>
           </mdb-card-title>
-          <!-- <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{card.buttonText}}</a> -->
           <button style="font-family: 'Cabin Sketch', cursive;" [routerLink]="['/chitiet',movieInfo.maPhim]" mdbBtn class="waves-light" mdbWavesEffect>Chi Tiết Phim</button>
         </mdb-card-body>
       </mdb-card>

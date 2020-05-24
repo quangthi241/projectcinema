@@ -1,9 +1,12 @@
+<div class="loader" *ngIf='loading == true; else detail'></div>
+
+<ng-template #detail>
 <Header>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background-color: black; ">
     <div class="container">
       <a
       class="navbar-brand js-scroll-trigger"
-      href="qluser"
+      href="/"
       style="color: darkkhaki; font-family: 'Fredericka the Great', cursive; font-size: 30px;"
       >
       CINEMA
@@ -60,9 +63,6 @@
               <div *ngIf='biDanh.errors.required' style="color: red;">
                 Vui lòng nhập bí danh
               </div>
-              <!-- <div *ngIf='biDanh.errors.pattern' style="color: red;">
-                Vui lòng nhập đúng
-              </div> -->
             </div>
           </div>
           <div class="form-group">
@@ -128,30 +128,20 @@
       <div class="col-md-6 Col-xm-12">
         <table  border="1" width= "500px" 	cellspacing="100px">
           <tr style="border: black 1px;">
-            <!-- <th>STT</th> -->
             <th>Mã Phim</th>
             <th>Tên Phim</th>
             <th>Ngày Khởi Chiếu</th>
-            <!-- <th>Link Trailer</th> -->
             <th>Ma nhom</th>
             <th>Cập Nhật</th>
             <th>Xóa</th>
 
           </tr>
-        <!-- </div>
-        <div> -->
           <tr *ngFor='let index of mangPhim | search : "maPhim,tenPhim":query '>
-              <!-- <td>{{index.length}}</td> -->
               <td>{{index.maPhim}}</td>
               <td>{{index.tenPhim}}</td>
               <td>{{index.ngayKhoiChieu | date: 'M/d-h:mm'}}</td>
-              <!-- <td>
-                <a [href]='index.trailer'>{{index.trailer}}</a>
-              </td> -->
-              <!-- <td>{{index.soDt}}</td> -->
               <td>{{index.maNhom}}</td>
-              <!-- <td style="padding-left: 40px;">{{index.maLoaiNguoiDung}}</td> -->
-               <td > <!-- style="padding-left: 40px;" -->
+               <td >
                 <button class="btn btn-success" #eDit
                   [attr.data-maPhim]='index.maPhim'
                   [attr.data-tenPhim]='index.tenPhim'
@@ -184,20 +174,9 @@
 
 <footer>
   <div class="container">
-    <p>&copy; Your Website 2019. All Rights Reserved.</p>
-    <ul class="list-inline">
-      <li class="list-inline-item">
-        <a href="#">Privacy</a>
-      </li>
-      <li class="list-inline-item">
-        <a href="#">Terms</a>
-      </li>
-      <li class="list-inline-item">
-        <a href="#">FAQ</a>
-      </li>
-    </ul>
+    <p>&copy; Be all you can be</p>
   </div>
 </footer>
-
+</ng-template>
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NguoidungService } from './quanlynguoidung.service';
 import { NguoiDung } from 'src/app/models/nguoidung';
@@ -10,11 +10,12 @@ import { CookieAuth } from 'src/app/cookie-service/cookie.service';
   styleUrls: ['./quanlynguoidung.component.scss'],
   providers: [NguoidungService]
 })
-export class QuanLyNguoiDungComponent implements OnInit {
+export class QuanLyNguoiDungComponent implements OnInit, AfterViewInit {
   @ViewChild('formAddUser') formAdd: NgForm;
   mangNguoiDungDK: NguoiDung[] = [];
   public query: string; //tên biến để lọc tên
   public capNhat: boolean = false;
+  public loading: boolean = false;
   constructor(private service: NguoidungService, private cookie: CookieAuth) { }
 
   clickForm(value: NguoiDung){
@@ -27,7 +28,7 @@ export class QuanLyNguoiDungComponent implements OnInit {
         },
         (error) => {
           console.log(error);
-          alert('Thêm người dùng thất bại')
+          alert('Thêm người dùng thất bại : ' + error.error)
         }
       )
     }else{
@@ -79,7 +80,14 @@ export class QuanLyNguoiDungComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getDanhSachNguoiDung()
+    this.loading = true;
+    this.getDanhSachNguoiDung();
+  }
+
+  ngAfterViewInit(): void{
+    setTimeout(() => {
+      this.loading = false;
+    }, 1000);
   }
 
   getDanhSachNguoiDung(){

@@ -31,11 +31,11 @@ export class SeatListComponent implements OnInit {
     this.soGheCOnLai = this.seatList.length - this.soGheDadat;
     console.log(this.dsgdadat);
     this.guiGheInfo.emit(this.dsgdadat);
-
   }
   // addseat(gheDcThem){
   //   this.seatList.push(gheDcThem);
   // }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 }

@@ -14,7 +14,7 @@ export class LoginGuard implements CanActivate {
       if(this.cookie.get('maLoaiNguoiDung') === 'QuanTri'){
         return true;
       }
-      alert("Vui lòng đăng nhập");
-      this._router.navigate(["/signin"]);
+      alert("Vui lòng đăng nhập bằng tài khoản admin");
+      this._router.navigate(["/dangnhap"]);
   }
 }

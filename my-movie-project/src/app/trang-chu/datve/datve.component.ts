@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { MoviesService } from '../movies-currently-playing/movies-playing.servie';
 import { DatveService } from './datve.service';
 import { CookieAuth } from 'src/app/cookie-service/cookie.service';
@@ -9,7 +9,8 @@ import { CookieAuth } from 'src/app/cookie-service/cookie.service';
   templateUrl: './datve.component.html',
   styleUrls: ['./datve.component.scss']
 })
-export class DatveComponent implements OnInit {
+export class DatveComponent implements OnInit, AfterViewInit {
+  public loading = false;
   public seatList: any[];
 
   // <---thong tin dat ve gui len server
@@ -23,7 +24,8 @@ export class DatveComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private phimSV: MoviesService,
     private cookietk: CookieAuth,
-    ) { }
+    ) {
+    }
 
   LayTaiKhoanNguoiDung(){
     let nguoiDungHienTai = this.cookietk.isHaveToken();
@@ -42,27 +44,32 @@ export class DatveComponent implements OnInit {
   }
 
   DatVe(){
+    let nguoiDungHienTai = this.cookietk.isHaveToken();
     let ve:{maLichChieu: string, danhSachVe:any[], taiKhoanNguoiDung: string} = {
       maLichChieu: this.maLichChieu,
       danhSachVe: this.danhSachVe,
       taiKhoanNguoiDung: this.taiKhoan,
     }
 
-    if(this.danhSachVe.length >= 1 ){
-      this.apidatve.DatVe(ve).subscribe(
-        (kq) => {
-          console.log(kq);
-          console.log(ve);
-          alert('Đặt vé thành công')
-          location.reload();
-        },
-        (err) => {
-          console.log(err.error);
-          alert('Dat ve that bai xin hay thu lai')
-        }
-      )
+    if(nguoiDungHienTai == true){
+      if(this.danhSachVe.length >= 1 ){
+        this.apidatve.DatVe(ve).subscribe(
+          (kq) => {
+            console.log(kq);
+            console.log(ve);
+            alert('Đặt vé thành công')
+            location.reload();
+          },
+          (err) => {
+            console.log(err.error);
+            alert('Dat ve that bai xin hay thu lai')
+          }
+        )
+      }else{
+        alert('Vui lòng chọn ghế trước khi đặt vé')
+      }
     }else{
-      alert('Vui lòng chọn ghế trước khi đặt vé')
+      alert('Vui lòng đăng nhập để đặt vé');
     }
   }
 
@@ -77,7 +84,7 @@ export class DatveComponent implements OnInit {
         this.maLichChieu = kq.maLichChieu;
         this.phimSV.LayChiTietPhongVe(this.maLichChieu).subscribe(
           (kq1) => {
-            console.log(kq1);
+            // console.log(kq1);
             this.seatList = kq1.danhSachGhe;
           }
         )
@@ -86,5 +93,10 @@ export class DatveComponent implements OnInit {
         console.log(error);
       }
     )
+      this.loading = true;
+  }
+
+  ngAfterViewInit(): void{
+    this.loading = false;
   }
 }

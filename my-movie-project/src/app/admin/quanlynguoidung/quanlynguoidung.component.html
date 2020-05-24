@@ -1,9 +1,12 @@
+<div class="loader" *ngIf='loading == true; else detail'></div>
+
+<ng-template #detail>
 <Header>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background-color: black; ">
     <div class="container">
       <a
       class="navbar-brand js-scroll-trigger"
-      href="qluser"
+      href="/"
       style="color: darkkhaki; font-family: 'Fredericka the Great', cursive; font-size: 30px;"
       >
       CINEMA
@@ -122,27 +125,16 @@
       <div class="col-md-7 Col-xm-12 Col-sm-12">
         <table  border="1" width= "500px" 	cellspacing="100px">
           <tr style="border: black 1px;">
-            <!-- <th>STT</th> -->
             <th>Tài khoản</th>
             <th>Password</th>
-            <!-- <th>Họ tên</th> -->
             <th>Email</th>
-            <!-- <th>Số điện thoại</th> -->
-            <!-- <th>Đối tượng</th> -->
             <th>Cập nhật</th>
             <th>Xóa</th>
           </tr>
-        <!-- </div>
-        <div> -->
           <tr *ngFor='let index of mangNguoiDungDK | search : "taiKhoan,soDt,hoTen,email":query '>
-              <!-- <td>{{index.length}}</td> -->
               <td>{{index.taiKhoan}}</td>
               <td>{{index.matKhau}}</td>
-              <!-- <td>{{index.hoTen}}</td> -->
               <td>{{index.email}}</td>
-              <!-- <td>{{index.soDt}}</td> -->
-              <!-- <td>{{index.maNhom}}</td> -->
-              <!-- <td style="padding-left: 40px;">{{index.maLoaiNguoiDung}}</td> -->
               <td style="padding-left: 40px;">
                 <button class="btn btn-dark" #eDit
                   [attr.data-taikhoan]='index.taiKhoan'
@@ -171,19 +163,8 @@
 
 <footer>
   <div class="container">
-    <p>&copy; Your Website 2019. All Rights Reserved.</p>
-    <ul class="list-inline">
-      <li class="list-inline-item">
-        <a href="#">Privacy</a>
-      </li>
-      <li class="list-inline-item">
-        <a href="#">Terms</a>
-      </li>
-      <li class="list-inline-item">
-        <a href="#">FAQ</a>
-      </li>
-    </ul>
+    <p>&copy; Be all you can be</p>
   </div>
 </footer>
-
+</ng-template>
 

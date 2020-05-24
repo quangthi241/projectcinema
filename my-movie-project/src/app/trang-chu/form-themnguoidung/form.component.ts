@@ -42,6 +42,7 @@ export class FormComponent implements OnInit {
       maLoaiNguoiDung: maloainguoidung
     })
   }
+
   ngOnInit(): void {
     this.getDanhSachNguoiDung()
   }

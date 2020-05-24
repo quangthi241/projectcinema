@@ -15,7 +15,6 @@ export class MovieDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   public ttp: any;
   public trailerctp: string;
   public loading = false;
-  public ngxLoadingAnimationTypes;
   constructor(private activate:ActivatedRoute, private phimSV: MoviesService) { }
 
   ngOnInit(): void {
@@ -27,9 +26,11 @@ export class MovieDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
         })
       ).subscribe(
         (kq) => {
+
           this.ttp = kq;
           this.trailerctp = this.ttp.trailer;
           // console.log(this.MaPhim);
+          this.loading = false;
         })
 
   }

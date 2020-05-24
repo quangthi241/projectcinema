@@ -9,21 +9,18 @@ import { CookieAuth } from '../cookie-service/cookie.service';
 import { ButtonsModule, WavesModule, IconsModule } from 'angular-bootstrap-md';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
-import { SigninComponent } from './signin/signin.component';
 import { QuanLyNguoiDungComponent } from './quanlynguoidung/quanlynguoidung.component';
 import { QuanlyphimComponent } from './quanlyphim/quanlyphim.component';
 import { LoginGuard } from './login/login.guard';
 
 
 const routes: Routes =[
-  { path: '', component: SigninComponent },
   { path: 'qluser',canActivate:[LoginGuard], component: QuanLyNguoiDungComponent },
   { path: 'qlmovies',canActivate:[LoginGuard], component: QuanlyphimComponent },
 ]
 
 @NgModule({
   declarations: [
-    SigninComponent,
     QuanLyNguoiDungComponent,
     QuanlyphimComponent
   ],
@@ -39,7 +36,6 @@ const routes: Routes =[
     PipesModule
   ],
   exports: [
-    SigninComponent,
     QuanLyNguoiDungComponent,
     QuanlyphimComponent
   ],

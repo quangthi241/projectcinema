@@ -1,14 +1,19 @@
-<div class='bgfilmstyle'>
-  <app-seat-list [seatList]='seatList' (guiGheInfo)='nhanGheInfo($event)'></app-seat-list>
-  <div class="container">
-    <div class="row">
-      <div class="col-6 mx-auto">
-        <button class="btn btn-success" (click)='LayTaiKhoanNguoiDung()'>Chọn ghế</button>
-      </div>
-      <div class="col-6 mx-auto">
-        <button class="btn btn-success" (click)='DatVe()'>Đặt vé</button>
+
+<div class="loader" *ngIf='loading === true; else detail'></div>
+
+<ng-template #detail>
+  <div class='bgfilmstyle'>
+      <app-seat-list [seatList]='seatList' (guiGheInfo)='nhanGheInfo($event)'></app-seat-list>
+    <div class="container">
+      <div class="row">
+        <div class="col-6 mx-auto">
+          <button class="btn btn-success" (click)='LayTaiKhoanNguoiDung()'>Chọn ghế</button>
+        </div>
+        <div class="col-6 mx-auto">
+          <button class="btn btn-success" (click)='DatVe()'>Đặt vé</button>
+        </div>
       </div>
     </div>
+    <br>
   </div>
-  <br>
-</div>
+</ng-template>

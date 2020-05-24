@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MovieService } from './quanlyphim.service';
 import { CookieAuth } from 'src/app/cookie-service/cookie.service';
@@ -10,11 +10,12 @@ import { Movie } from 'src/app/models/movie';
   styleUrls: ['./quanlyphim.component.scss'],
   providers: [MovieService]
 })
-export class QuanlyphimComponent implements OnInit {
+export class QuanlyphimComponent implements OnInit, AfterViewInit {
   @ViewChild('formAddMovie') formAdd: NgForm;
   mangPhim: Movie[] = [];
   public query: string; //tên biến để lọc tên
   public capNhat: boolean = false;
+  public loading: boolean = false;
   constructor(private service: MovieService, private cookie: CookieAuth) { }
 
   clickForm(value: Movie){
@@ -94,7 +95,14 @@ export class QuanlyphimComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loading = true;
     this.getDanhSachPhim()
+  }
+
+  ngAfterViewInit(): void{
+    setTimeout(() => {
+      this.loading = false;
+    }, 1000);
   }
 
   getDanhSachPhim(){

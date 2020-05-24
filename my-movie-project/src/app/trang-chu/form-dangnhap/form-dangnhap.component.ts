@@ -13,31 +13,29 @@ import { CookieAuth } from '../../cookie-service/cookie.service';
 })
 export class FormDangnhapComponent implements OnInit, OnDestroy, DoCheck, OnChanges  {
   public show: boolean = this.cookie.isHaveToken() ;
-  public loading = false;
-  public ngxLoadingAnimationTypes;
   constructor(private apiDangNhap: DangnhapSevice, private router: Router, private cookie: CookieAuth) { }
 
   formDangNhap:FormGroup;
   DangNhap(){
-    this.loading = true;
     let nguoidungDN = this.formDangNhap.value;
     this.apiDangNhap.dangNhap(nguoidungDN.taiKhoan, nguoidungDN.matKhau).subscribe(
       (kq) => {
-        this.loading = false;
         if(typeof(kq) === 'object'){
           console.log(kq);
           this.cookie.setCookie('token', kq.accessToken);
           this.cookie.setCookie('taikhoan', kq.taiKhoan);
           this.cookie.setCookie('maLoaiNguoiDung', kq.maLoaiNguoiDung);
-          location.reload();
           alert('Đăng Nhập Thành Công')
-          // this.router.navigate(['']);
+          if(kq.maLoaiNguoiDung == 'QuanTri'){
+            this.router.navigate(['/qluser']);
+          }else{
+            location.reload();
+          }
         }else{
           alert('Tai khoan hoac mat khau chua dung');
         }
       },
       (error) => {
-        this.loading = false;
         console.log(error);
         alert(error.error);
       }
